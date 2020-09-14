@@ -1,36 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import List from './components/List.jsx';
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      items: []
-    }
-  }
-
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
-
-  render () {
-    return (<div>
-      <h1>Item List</h1>
-      <List items={this.state.items}/>
-    </div>)
-  }
-}
+import App from './components/App.jsx';
 
 ReactDOM.render(<App />, document.getElementById('app'));
+
+// babel-loader    6.4.1    6.4.1    8.1.0  github-fetcher-fullstack-v2
+// mongoose      4.13.21  4.13.21   5.10.5  github-fetcher-fullstack-v2
+// react          15.6.2   15.6.2  16.13.1  github-fetcher-fullstack-v2
+// react-dom      15.6.2   15.6.2  16.13.1  github-fetcher-fullstack-v2
+// webpack         2.7.0    2.7.0   4.44.1
