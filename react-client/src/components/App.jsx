@@ -39,7 +39,7 @@ class App extends React.Component {
       <div>
         <HeaderCalc>Calculate</HeaderCalc>
         <HeaderOneRep>one rep max</HeaderOneRep>
-        <img src="../icons/headerImg.png"/>
+        <HeaderImg src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Workout-rafiki+1.png"/>
         <Form />
       </div>
     )
@@ -72,6 +72,12 @@ font-weight: bold;
 font-size: 26px;
 line-height: 30px;
 `;
+const HeaderImg = styled.img`
+  position: absolute;
+  height: 260px;
+  top: 150px;
+  z-index: -1;
+`
 
 
 export default App;
