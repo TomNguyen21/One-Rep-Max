@@ -21,6 +21,7 @@ class Form extends React.Component {
     this.setBryzchi = this.setBryzchi.bind(this);
     this.setEpley = this.setEpley.bind(this);
     this.setLombardi = this.setLombardi.bind(this);
+    this.showModal = this.showModal.bind(this);
   }
 
   calculateMax(weight, reps) {
@@ -40,9 +41,6 @@ class Form extends React.Component {
   setBryzchi() {
     this.setState({
       formula: (weight, reps) => {
-        if (typeof weight !== 'Number' || typeof reps === 'Number') {
-          return 0;
-        }
         return weight * (36/ (37 - reps));
       },
       click1: true,
@@ -54,9 +52,7 @@ class Form extends React.Component {
   setEpley() {
     this.setState({
       formula: (weight, reps) => {
-        if (typeof weight !== 'Number' || typeof reps === 'Number') {
-          return 0;
-        }return weight * (1 + (reps/30) );
+        return weight * (1 + (reps/30) );
       },
       click1: false,
       click2: true,
@@ -66,9 +62,6 @@ class Form extends React.Component {
 
   setLombardi() {
     this.setState({ formula: (weight, reps) => {
-      if (typeof weight !== 'Number' || typeof reps === 'Number') {
-        return 0;
-      }
       return weight * reps**0.10;
     },
     click1: false,
@@ -77,7 +70,7 @@ class Form extends React.Component {
   });
   }
 
-  showModal(e) {
+  showModal() {
     this.setState({ show: !this.state.show });
   }
 
@@ -125,7 +118,7 @@ class Form extends React.Component {
           </div>
           <OneRepMax>Your one rep max:</OneRepMax>
           <Max>{max} {measurement} <ModalButton  onClick={ (e) => {this.showModal()}}>Show Details<img src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Vector.png" /></ModalButton></Max>
-          <Modal show={this.state.show} click={this.showModal}>
+          <Modal show={this.state.show} max={this.state.max} showModal={this.showModal}>
             <CalculatedPercents>
               <div className="col1">
                 <ul>
@@ -160,6 +153,7 @@ const CalculatedPercents = styled.div`
   display: flex;
   flex-direction: row;
   clear: both;
+  border-radius: 50px;
 `;
 const FormulaHead = styled.h3`
   font-family: Karla;

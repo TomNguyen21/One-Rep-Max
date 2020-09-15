@@ -7,6 +7,8 @@ class Modal extends React.Component {
     }else {
       return (
         <ModalContainer>
+          <LessDetailButton onClick={this.props.showModal}>Less Details</LessDetailButton>
+          <div>100% 1 RM: {this.props.max}</div>
           {this.props.children}
         </ModalContainer>
       )
@@ -14,15 +16,43 @@ class Modal extends React.Component {
   }
 
 }
-
+const LessDetailButton = styled.button`
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #407bff;
+  border: 2px solid ;
+  border-color: #407bff;
+  border-radius: 50px;
+  outline: none;
+  :hover {
+    background-color: #F2F2F2;
+  }
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
+  }
+`
 const ModalContainer = styled.div`
-font-family: Karla;
-font-style: normal;
-font-weight: normal;
-font-size: 20px;
-line-height: 30px;
-background-color: #f2f2f2;
-border-radius: 10px;
+  font-family: Karla;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  left: 0px;
+  top: 250px;
+  z-index: 1;
+  width: 400px;
+  height: 100%:
+  overflow: auto;
+  background-color: #f2f2f2;
+  border: 1px solid rgba(0, 0, 0, 0.16)
+  border-radius: 50px;
 `
 export default Modal;
 
