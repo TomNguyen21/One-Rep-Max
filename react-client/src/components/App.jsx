@@ -39,7 +39,7 @@ class App extends React.Component {
       <div>
         <HeaderCalc>Calculate</HeaderCalc>
         <HeaderOneRep>one rep max</HeaderOneRep>
-        <HeaderImg src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Workout-rafiki+1.png"/>
+        <HeaderImg src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/workoutimg.png"/>
         <Form />
       </div>
     )

@@ -84,6 +84,7 @@ class Form extends React.Component {
   render() {
     let max = this.state.max;
     let isLbs = this.state.isLbs;
+    let measurement = isLbs ? 'lb' : 'kg';
     return (
       <FormStyle onSubmit={this.handleSubmit}>
       <div>
@@ -98,8 +99,8 @@ class Form extends React.Component {
 
       </div>
         <div>
-          <FormulaHead>Weight <small>{isLbs ? 'lbs' : 'kgs'}</small></FormulaHead>
-          <FormWeight id="weight" min="0" type="number" placeholder="Enter Weight"/>
+          <FormulaHead>Weight <small>{measurement}</small></FormulaHead>
+          <FormWeight required id="weight" min="0" type="number" placeholder="Enter Weight"/>
           <FormulaHead>Number of Reps</FormulaHead>
           <DropdownReps required id="reps" id="reps" defaultValue="">
             <option value="" disabled selected hidden>Select Num</option>
@@ -123,26 +124,25 @@ class Form extends React.Component {
             <ResetButton onClick={this.resetMax} type="reset" />
           </div>
           <OneRepMax>Your one rep max:</OneRepMax>
-          <Max>{max} </Max>
-          <ModalButton onClick={ (e) => {this.showModal()}}>Show Details</ModalButton>
+          <Max>{max} {measurement} <ModalButton  onClick={ (e) => {this.showModal()}}>Show Details<img src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Vector.png" /></ModalButton></Max>
           <Modal show={this.state.show} click={this.showModal}>
             <CalculatedPercents>
               <div className="col1">
                 <ul>
-                  <UnbulletList>95% 1 RM: {Math.round(max * .95)}</UnbulletList>
-                  <UnbulletList>85% 1 RM: {Math.round(max * .85)}</UnbulletList>
-                  <UnbulletList>75% 1 RM: {Math.round(max * .75)}</UnbulletList>
-                  <UnbulletList>65% 1 RM: {Math.round(max * .65)}</UnbulletList>
-                  <UnbulletList>55% 1 RM: {Math.round(max * .55)}</UnbulletList>
+                  <UnbulletList>95% 1 RM: {Math.round(max * .95)} {measurement}</UnbulletList>
+                  <UnbulletList>85% 1 RM: {Math.round(max * .85)} {measurement}</UnbulletList>
+                  <UnbulletList>75% 1 RM: {Math.round(max * .75)} {measurement}</UnbulletList>
+                  <UnbulletList>65% 1 RM: {Math.round(max * .65)} {measurement}</UnbulletList>
+                  <UnbulletList>55% 1 RM: {Math.round(max * .55)} {measurement}</UnbulletList>
                 </ul>
               </div>
               <div className="col2">
                 <ul>
-                  <UnbulletList>90% 1 RM: {Math.round(max * .90)}</UnbulletList>
-                  <UnbulletList>80% 1 RM: {Math.round(max * .80)}</UnbulletList>
-                  <UnbulletList>70% 1 RM: {Math.round(max * .70)}</UnbulletList>
-                  <UnbulletList>60% 1 RM: {Math.round(max * .60)}</UnbulletList>
-                  <UnbulletList>50% 1 RM: {Math.round(max * .50)}</UnbulletList>
+                  <UnbulletList>90% 1 RM: {Math.round(max * .90)} {measurement}</UnbulletList>
+                  <UnbulletList>80% 1 RM: {Math.round(max * .80)} {measurement}</UnbulletList>
+                  <UnbulletList>70% 1 RM: {Math.round(max * .70)} {measurement}</UnbulletList>
+                  <UnbulletList>60% 1 RM: {Math.round(max * .60)} {measurement}</UnbulletList>
+                  <UnbulletList>50% 1 RM: {Math.round(max * .50)} {measurement}</UnbulletList>
                 </ul>
               </div>
             </CalculatedPercents>
@@ -175,7 +175,7 @@ const ButtonRow = styled.div`
   height: 41px;
   background: #FFFFFF;
   border-radius: 4px;
-  box-shadow: 0px 4px 10px rgba(106, 106, 106, 0.16);
+  box-shadow: 3px 4px 10px rgba(106, 106, 106, 0.16);
   margin-top: 10px;
 `;
 const FormulaButtons = styled.button`
@@ -192,6 +192,10 @@ const FormulaButtons = styled.button`
   outline: none;
   :hover {
     background-color: #f2f2f2
+  }
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
   }
 `;
 const CenterFormulaButtons = styled.button`
@@ -210,6 +214,10 @@ const CenterFormulaButtons = styled.button`
   border-right: 1px solid rgba(0,0,0,0.16);
   :hover {
     background-color: #f2f2f2
+  }
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
   }
 `;
 
@@ -261,6 +269,10 @@ const CalculateButton = styled.button`
   border-radius: 4px;
   outline: none;
   margin: 20px 0px 0px 0px;
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
+  }
 `;
 
 const ResetButton = styled.input`
@@ -275,6 +287,10 @@ const ResetButton = styled.input`
   text-align: center;
   color: #407BFF;
   border: none;
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
+  }
 `;
 
 const OneRepMax = styled.div`
@@ -287,7 +303,9 @@ const OneRepMax = styled.div`
   line-height: 21px;
 `;
 const ModalButton = styled.button`
-  width: 321px;
+  position: absolute;
+  left: 180px;
+  width: 140px;
   height: 41px;
   background-color: #FFFFFF;
   font-family: Karla;
@@ -296,20 +314,28 @@ const ModalButton = styled.button`
   font-size: 14px;
   line-height: 16px;
   text-align: center;
-  font-color: #22438C;
+  color: #407bff;
   border: 2px solid ;
-  border-color: #22438C;
-  border-radius: 4px;
+  border-color: #407bff;
+  border-radius: 50px;
   outline: none;
+  :hover {
+    background-color: #F2F2F2;
+  }
+  :active {
+    transform: scale(.9);
+    box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
+  }
 `
 const Max = styled.div`
-  width: 171px;
+  position: relative;
+  width: 500px;
   height: 43px;
   font-family: Karla;
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
-  line-height: 47px;
+  line-height: 16px;
 
   color: #407BFF;
 `
