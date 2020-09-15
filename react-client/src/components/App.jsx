@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Form from './Form.jsx';
+import styled from 'styled-components';
 /**
  * Have toggle to switch between lbs and kg
  * have a way to save data and persist it (does that mean making a user account and having to use authentication?)
@@ -25,9 +26,9 @@ class App extends React.Component {
   }
 
   getUserInfo() {
-    // axios.get('/')
-    //   .then()
-    //   .catch()
+    axios.get('/')
+      .then()
+      .catch()
   }
   componentDidMount() {
     this.getUserInfo();
@@ -36,10 +37,40 @@ class App extends React.Component {
   render () {
     return (
       <div>
+        <HeaderCalc>Calculate</HeaderCalc>
+        <HeaderOneRep>one rep max</HeaderOneRep>
         <Form />
       </div>
     )
   }
 }
+
+const HeaderCalc = styled.h3`
+position: absolute;
+width: 120px;
+height: 22px;
+left: 28px;
+top: 58px;
+
+font-family: Karla;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 26px;
+`;
+const HeaderOneRep = styled.h3`
+position: absolute;
+width: 191px;
+height: 37px;
+left: 28px;
+top: 83px;
+
+font-family: Karla;
+font-style: normal;
+font-weight: bold;
+font-size: 26px;
+line-height: 30px;
+`;
+
 
 export default App;
