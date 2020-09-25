@@ -4,7 +4,7 @@ var path = require('path');
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
 // var items = require('../database-mongo');
-
+const PORT = process.env.PORT || 3000;
 var app = express();
 
 // UNCOMMENT FOR REACT
@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
   // });
 });
 
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
+app.listen(PORT, function() {
+  console.log(`listening on port ${PORT}`);
 });
 
