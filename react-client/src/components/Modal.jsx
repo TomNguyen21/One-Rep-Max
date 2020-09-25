@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 class Modal extends React.Component {
   render() {
     if(!this.props.show) {
@@ -8,7 +9,7 @@ class Modal extends React.Component {
       return (
         <ModalContainer>
           <LessDetailButton onClick={this.props.showModal}>Less Details</LessDetailButton>
-          <div>100% 1 RM: {this.props.max}</div>
+          <OneRepMax>100% 1 RM: {this.props.max}</OneRepMax>
           {this.props.children}
         </ModalContainer>
       )
@@ -36,6 +37,11 @@ const LessDetailButton = styled.button`
     box-shadow: 1px 2px 5px rgba(106, 106, 106, 0.16);
   }
 `
+const OneRepMax = styled.div`
+  margin-top: 10px;
+  font-size: 26px;
+  font-weight: bold;
+`
 const ModalContainer = styled.div`
   font-family: Karla;
   font-style: normal;
@@ -45,7 +51,7 @@ const ModalContainer = styled.div`
   text-align: center;
   position: absolute;
   left: 0px;
-  top: 250px;
+  top: 195px;
   z-index: 1;
   width: 400px;
   height: 100%:
