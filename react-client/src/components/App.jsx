@@ -23,14 +23,34 @@ class App extends React.Component {
       logs: []
     }
     this.getUserInfo = this.getUserInfo.bind(this);
+    this.getLogs = this.getLogs.bind(this);
+    this.setLogs = this.setLogs.bind(this);
+    this.addLogs = this.addLogs.bind(this);
   }
 
+  addLogs(logs) {
+    axios.post(`/logs`, logs)
+      .then ( () => this.setState( {logs: [...this.state.logs, logs]}))
+      .catch(console.log)
+  }
+
+  getLogs() {
+    axios.get(`/logs`)
+      .then(this.setLogs)
+      .catch(console.log)
+  }
+
+  setLogs(logs) {
+    this.setState( {logs: logs.data})
+  }
   getUserInfo() {
     axios.get('/')
       .then()
       .catch()
   }
+
   componentDidMount() {
+    this.getLogs();
     this.getUserInfo();
   }
 
@@ -40,7 +60,7 @@ class App extends React.Component {
         <HeaderCalc>Calculate</HeaderCalc>
         <HeaderOneRep>one rep max</HeaderOneRep>
         <HeaderImg src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/workoutimg.png"/>
-        <Form />
+        <Form  addLogs={this.addLogs}/>
       </div>
     )
   }

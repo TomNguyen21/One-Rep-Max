@@ -11,19 +11,20 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var workOutLogs = mongoose.Schema({
+  date: String,
+  weight: Number,
+  reps: Number,
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Workouts = mongoose.model('Workouts', workOutLogs);
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Workouts.find({}, function(err, logs) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, logs);
     }
   });
 };
