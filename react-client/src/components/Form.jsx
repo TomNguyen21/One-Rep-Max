@@ -96,7 +96,7 @@ class Form extends React.Component {
           <FormWeight required id="weight" min="0" type="number" placeholder="Enter Weight"/>
           <FormulaHead>Number of Reps</FormulaHead>
           <DropdownReps required id="reps" id="reps" defaultValue="">
-            <option value="" disabled selected hidden>Select Num</option>
+            <option value="" disabled defaultValue hidden>Select Num</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
