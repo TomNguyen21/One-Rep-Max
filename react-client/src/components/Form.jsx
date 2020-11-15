@@ -117,7 +117,7 @@ class Form extends React.Component {
             <ResetButton onClick={this.resetMax} type="reset" />
           </div>
           <OneRepMax>Your one rep max:</OneRepMax>
-          <Max>{max} {measurement} <ModalButton  onClick={ (e) => {this.showModal()}}>Show Details<img src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Vector.png" /></ModalButton></Max>
+          <Max>{max} {measurement} <ModalButton  onClick={ (e) => {this.showModal()}}>Show Details<img src="https://hackreactor5erfliesmoreplaces.s3-us-west-1.amazonaws.com/Vector.png" /></ModalButton><button className='save-logs'>Save Log</button></Max>
           <Modal show={this.state.show} max={this.state.max} showModal={this.showModal}>
             <CalculatedPercents>
               <div className="col1">
