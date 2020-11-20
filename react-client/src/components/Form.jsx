@@ -70,10 +70,17 @@ class Form extends React.Component {
   });
   }
 
+
+  //TODO: Finish method to add logs to database
+  addLogs() {
+    this.addLogs();
+  }
+
   showModal() {
     this.setState({ show: !this.state.show });
   }
 
+  //TODO: create button to save logs to database
   render() {
     let max = this.state.max;
     let isLbs = this.state.isLbs;
